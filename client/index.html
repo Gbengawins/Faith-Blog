@@ -9,10 +9,23 @@
 </head>
 <body>
     <header>
+        <div class="nav-overlay open"></div>
+        <span role="button" class="menu-icon">
+            <ion-icon name="menu-outline"></ion-icon>
+        </span>
         <a href="#" class="logo-wrapper td-none">
             <div><span>F</span>aithLogs</div>
         </a>
-        <nav>
+        <nav >
+            <div class="search-item">
+                <span role="button" class="search-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </span>
+                <form action="index.html" method="post"  
+                    class="header-search-form hide">
+                    <input type="text" name="search-term" placeholder="Search this website..." class="input-control input-control-sm search-input" />                
+                </form>
+            </div>
             <ul class="navmenu">
                 <li class="navitem"><a href="#">All Posts</a></li>
                 <li class="navitem"><a href="#">Motivation</a></li>
@@ -46,5 +59,40 @@
     </header>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        //Toggle search icon
+        const searchIcon = document.querySelector('.search-icon');
+        const headerSearchForm = document.querySelector('.header-search-form');
+        const searchInput = document.querySelector('.search-input');
+
+        function toggleSearchBar() {
+            searchIcon.classList.toggle('hide');
+            headerSearchForm.classList.toggle('hide');
+            searchInput.focus();
+        }
+
+        searchIcon.addEventListener('click', toggleSearchBar);
+
+        searchInput.addEventListener('blur', toggleSearchBar);
+
+        //Navbar Responsiveness
+        const menuIcon = document.querySelector('.menu-icon');
+        const navOverlay = document.querySelector('.nav-overlay');
+        const navMenu = document.querySelector('.navmenu');
+
+
+        menuIcon.addEventListener('click', function() {
+        navOverlay.classList.toggle('open');
+        navMenu.classList.toggle('open');
+
+        });
+
+
+        navOverlay.addEventListener('click', function () {
+        navOverlay.classList.remove('open');
+        navMenu.classList.remove('open');
+
+        });
+    </script>
 </body>
 </html>

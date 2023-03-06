@@ -18,7 +18,9 @@ body {
     color: inherit;
 }
 
-
+.hide {
+    display: none;
+}
 
 /*========== COMPONENTS ==========*/
 
@@ -32,9 +34,19 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+header .menu-icon {
+    font-size: 32px;
+    display: none;
+}
+
+.header .nav-overlay {
+    display: none;
+}
 
 header nav {
     height: inherit;
+    display: flex;
+    align-items: center;
 }
 
 header ul {
@@ -46,12 +58,15 @@ header .navmenu {
     display: flex;
 }
 
-
 header .navmenu .navitem a {
     display: block;
     text-decoration: none;
     color: #383838;
     padding: 30px 16px;
+}
+
+header .navmenu .navitem a:hover {
+color: #ffd700;
 }
 
 header .navmenu .navitem {
@@ -62,7 +77,6 @@ header .navmenu .navitem .navicon {
     transform: translateY(4px);
     font-size: 16px;
 }
-
 
 header .navmenu .navitem .dropdown  {
     position: absolute;
@@ -86,7 +100,6 @@ header .navmenu .navitem:hover .dropdown {
     transition: all 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
 }
 
-
 header .navmenu .navitem .dropdown::after {
     content: "";
     position: absolute;
@@ -96,7 +109,6 @@ header .navmenu .navitem .dropdown::after {
     border-bottom:10px solid #fff;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-
 }
 
 header .navmenu .navitem .dropdown li::after {
@@ -110,7 +122,6 @@ header .navmenu .navitem .dropdown li::after {
 header .navmenu .navitem .dropdown li:last-child::after {
     display: none;
 }
-
 
 header .navmenu .navitem .dropdown a {
     padding: 16px;
@@ -131,6 +142,81 @@ header .navmenu .navitem .dropdown a {
 
 
 
+
+/*========== Media Queries ==========*/
+@media only screen and (max-width: 1024px) {
+    header {
+            padding: 0 10px;
+    }
+};
+
+@media only screen and (min-width: 756px) {
+    header .menu-icon {
+        font-size: 32px;
+        display: block;
+    }
+
+    .header .nav-overlay.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.45);
+
+    }
+
+    header nav {
+
+    }
+
+    header .navmenu {
+       position: fixed;
+       left: 0;
+       top: 0;
+       flex-direction: column;
+       height: 100%;
+       width: 250px;
+       overflow-y: scroll;
+       z-index: 99999;
+       padding: 50px 0;
+       transform: translateX(-250px);
+        transition: all 0.25s ease-in-out;
+    }
+
+    header .navmenu.open {
+        transform: translateX(0px);
+        transition: all 0.25s ease-in-out;
+    }
+
+
+    header .navmenu .navitem a {
+        padding: 16px;
+    }
+
+    header .navmenu .navitem {
+      flex-direction: column;
+    }
+
+    header .navmenu .navitem .dropdown {
+        position: static;
+        width: 100%;
+        top: 80px;
+        border-radius: 0px;
+        box-shadow: none;
+        opacity: 1;
+        max-height: 200px;
+        z-index: 1;
+        transform: translateY(0px);
+    }
+
+
+    header .navmenu .navitem .dropdown a {
+            padding-left: 32px;
+        }
+
+}
 
 
 
